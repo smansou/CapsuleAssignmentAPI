@@ -11,6 +11,8 @@
   --color4: #158499;
   --color5: #1ab9a9;
   --text-color: #333;
+  --columns: 0;
+  --rows: 0;
 }
 
 html {
@@ -56,4 +58,29 @@ main {
 
 .hidden {
   display: none;
+}
+
+.main-hedings {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+.row {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 100%;
+}
+.cell {
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
