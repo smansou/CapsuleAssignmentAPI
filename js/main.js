@@ -1,8 +1,11 @@
 
+const container = document.querySelector(".main-container");
 
-import { deletePerson } from './delete.js';
+
+import { deletePerson } from "./delete.js";
 
 // ! temp
+
 export const personsArr = [
   {
     id: '018',
@@ -74,6 +77,7 @@ export const personsArr = [
     city: 'תל אביב',
     capsule: 4,
   },
+
 ];
 
 // ! temp
@@ -108,6 +112,43 @@ const getFetchedData = async (url) => {
   },
  *
  */
+async function makePeopleArr() {
+  const data1 = await getFetchedData(
+    "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
+  );
+  const data2 = await getFetchedData(
+    "https://capsules-asb6.herokuapp.com/api/teacher/toam"
+  );
+  const generalData = data1.concat(data2);
+  const urls = [];
+  for (const element of generalData) {
+    urls.push(`https://capsules-asb6.herokuapp.com/api/user/${element.id}`);
+  }
+  const requests = urls.map((url) => getFetchedData(url));
+  await Promise.all(requests)
+    .then((responses) =>
+      responses.forEach((response) => {
+        const person = {
+          id: response.id,
+          gender: response.gender,
+          firstName: response.firstName,
+          lastName: response.lastName,
+          hobby: response.hobby,
+          age: response.age,
+          city: response.city,
+          capsule: response.capsule,
+        };
+        personsArr.push(person);
+      })
+    )
+    .catch((e) => console.log(e));
+}
+
+async function check() {
+  await makePeopleArr();
+  console.log(personsArr);
+}
+check();
 
 // todo draw(array)
 // ! genetate person div according to "person" input
