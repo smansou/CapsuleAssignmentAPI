@@ -1,6 +1,8 @@
 import {personsArr} from "./main.js";
 import { deletePerson } from "./delete.js";
 import { makePeopleArr } from "./main.js";
+import { edit } from "./delete.js";
+
 
 const container = document.querySelector('.main-container');
 
@@ -29,7 +31,7 @@ async function createHTMlElements(arrOfObj){
           
       }
       editBtn.setAttribute('id', arrOfObj[i]['id']);
-      editBtn.addEventListener('click', ()=>{alert("I will activate edit func")});
+      editBtn.addEventListener('click', ()=>{edit(arrOfObj[i]['id'])});
       editBtn.innerText = 'Edit';
       row.appendChild(editBtn);
     
