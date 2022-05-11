@@ -1,81 +1,15 @@
-const container = document.querySelector('.main-container');
+const container = document.querySelector(".main-container");
+const search = document.getElementById("search");
+const category = document.getElementById("category");
+const restart = document.getElementById("reset_btn");
 
-import { deletePerson } from './delete.js';
+import { deletePerson } from "./delete.js";
+import { createHTMlElements } from "./features.js";
+import { draw } from "./features.js";
 
 // ! temp
 
-export const personsArr = [
-  {
-    id: '018',
-    gender: 'female',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-  {
-    id: '036',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-  {
-    id: '026',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-  {
-    id: '022',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-  {
-    id: '019',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-  {
-    id: '112',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-  {
-    id: '812',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-  },
-];
+export let personsArr = [];
 
 // ! temp
 
@@ -111,10 +45,10 @@ const getFetchedData = async (url) => {
  */
 export async function makePeopleArr() {
   const data1 = await getFetchedData(
-    'https://capsules-asb6.herokuapp.com/api/teacher/mordi'
+    "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
   );
   const data2 = await getFetchedData(
-    'https://capsules-asb6.herokuapp.com/api/teacher/toam'
+    "https://capsules-asb6.herokuapp.com/api/teacher/toam"
   );
   const generalData = data1.concat(data2);
   const urls = [];
@@ -128,8 +62,8 @@ export async function makePeopleArr() {
         const person = {
           id: response.id,
           gender: response.gender,
-          firstName: response.firstName,
-          lastName: response.lastName,
+          firstName: response.firstName.replaceAll(" ", ""),
+          lastName: response.lastName.replaceAll(" ", ""),
           hobby: response.hobby,
           age: response.age,
           city: response.city,
@@ -139,10 +73,8 @@ export async function makePeopleArr() {
       })
     )
     .catch((e) => console.log(e));
-    return personsArr;
+  return personsArr;
 }
-
-
 
 // async function check() {
 //   await makePeopleArr();
@@ -187,3 +119,36 @@ export async function makePeopleArr() {
  * @return void
  * @side_effect re-draw only relevant divs, by new template
  */
+category.addEventListener("change", filt);
+search.addEventListener("keyup", filt);
+
+function filt() {
+  const text = search.value;
+  const filterBy = category.value;
+  if (text !== "") {
+    let filterArr;
+    if (filterBy !== "evreything") {
+      filterArr = personsArr.filter((obj) => {
+        return obj[filterBy].toString().startsWith(text);
+      });
+    } else {
+      filterArr = personsArr.filter(
+        (obj) =>
+          obj["firstName"].toString().startsWith(text) ||
+          obj["lastName"].toString().startsWith(text) ||
+          obj["hobby"].toString().startsWith(text) ||
+          obj["age"].toString().startsWith(text) ||
+          obj["city"].toString().startsWith(text) ||
+          obj["capsule"].toString().startsWith(text)
+      );
+    }
+    createHTMlElements(filterArr);
+  } else {
+    createHTMlElements(personsArr);
+  }
+}
+restart.addEventListener("click", () => {
+  search.value = "";
+  personsArr = [];
+  draw();
+});
