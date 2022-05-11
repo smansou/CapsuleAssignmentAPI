@@ -1,25 +1,25 @@
-const container = document.querySelector('.main-container');
+const container = document.querySelector(".main-container");
 
 // ! temp
 const personsArr = [
   {
-    id: '018',
-    gender: 'female',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
+    id: "018",
+    gender: "female",
+    firstName: "מור",
+    lastName: "מנשה",
+    hobby: "לקרוא",
     age: 31,
-    city: 'תל אביב',
+    city: "תל אביב",
     capsule: 4,
   },
   {
-    id: '016',
-    gender: 'male',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
+    id: "016",
+    gender: "male",
+    firstName: "מור",
+    lastName: "מנשה",
+    hobby: "לקרוא",
     age: 31,
-    city: 'תל אביב',
+    city: "תל אביב",
     capsule: 4,
   },
 ];
@@ -56,6 +56,36 @@ const getFetchedData = async (url) => {
   },
  *
  */
+async function makePeopleArr() {
+  const data1 = await getFetchedData(
+    "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
+  );
+  const data2 = await getFetchedData(
+    "https://capsules-asb6.herokuapp.com/api/teacher/toam"
+  );
+  const generalData = data1.concat(data2);
+  for (const element of generalData) {
+    const innerData = await getFetchedData(
+      `https://capsules-asb6.herokuapp.com/api/user/${element.id}`
+    );
+    const person = {
+      id: innerData.id,
+      gender: innerData.gender,
+      firstName: innerData.firstName,
+      lastName: innerData.lastName,
+      hobby: innerData.hobby,
+      age: innerData.age,
+      city: innerData.city,
+      capsule: innerData.capsule,
+    };
+    personsArr.push(person);
+  }
+}
+
+console.log(personsArr);
+async function check() {
+  await makePeopleArr();
+}
 
 // todo draw(array)
 // ! genetate person div according to "person" input
@@ -67,7 +97,7 @@ const getFetchedData = async (url) => {
  * @exapel :
  */
 
-// todo delete(id) return void
+// todo deletePerson(id) return void
 /**
  * @param {string} id
  * @return void
