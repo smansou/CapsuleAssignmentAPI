@@ -1,5 +1,7 @@
 const container = document.querySelector('.main-container');
 
+import { deletePerson } from './delete.js';
+
 // ! temp
 const personsArr = [
   {
@@ -67,7 +69,7 @@ const getFetchedData = async (url) => {
  * @exapel :
  */
 
-// todo delete(id) return void
+// todo deletePerson(id) return void
 /**
  * @param {string} id
  * @return void
@@ -94,3 +96,5 @@ const getFetchedData = async (url) => {
  * @return void
  * @side_effect re-draw only relevant divs, by new template
  */
+
+export { personsArr };
