@@ -1,9 +1,11 @@
-const container = document.querySelector('.main-container');
+export const container = document.querySelector('.main-container');
 
 import { deletePerson } from './delete.js';
+import { createHTMlElements } from './features.js';
+import { sort, setSortEventListeners } from './sort.js';
 
 // ! temp
-
+setSortEventListeners();
 export const personsArr = [
   {
     id: '018',
@@ -139,10 +141,8 @@ export async function makePeopleArr() {
       })
     )
     .catch((e) => console.log(e));
-    return personsArr;
+  return personsArr;
 }
-
-
 
 // async function check() {
 //   await makePeopleArr();
