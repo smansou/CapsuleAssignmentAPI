@@ -1,5 +1,7 @@
 const container = document.querySelector(".main-container");
 
+import { deletePerson } from './delete.js';
+
 // ! temp
 const personsArr = [
   {
@@ -124,3 +126,5 @@ async function check() {
  * @return void
  * @side_effect re-draw only relevant divs, by new template
  */
+
+export { personsArr };
