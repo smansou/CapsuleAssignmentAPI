@@ -3,9 +3,9 @@ import { personsArr } from './main.js';
 let editIsActiv = false;
 
 export function deletePerson(id) {
-  const elementToRemove = document.querySelector(`#del${id}`);
+  const elementToRemove = document.querySelector(`#id${id}`);
   if (elementToRemove) {
-    elementToRemove.parentElement.remove();
+    elementToRemove.parentNode.removeChild(elementToRemove);
   } else {
     console.error(`Elelment with id "${id}" is ont in the DOM`);
   }

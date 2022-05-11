@@ -1,12 +1,15 @@
 import {personsArr} from "./main.js";
+import { deletePerson } from "./delete.js";
+import { makePeopleArr } from "./main.js";
 
 const container = document.querySelector('.main-container');
 
 
 
 
-function createHTMlElements(arrOfObj){
-
+async function createHTMlElements(){
+    const arrOfObj = await makePeopleArr();
+    
     let personKeys = ['id', 'gender', 'firstName', 'lastName', 'hobby', 'age', 'city', 'capsule'];
    
       for(let i = 0 ; i < arrOfObj.length; i++){
@@ -20,7 +23,7 @@ function createHTMlElements(arrOfObj){
           cell.innerHTML = arrOfObj[i][personKeys[j]];
           cell.setAttribute('class', 'cell');
           row.appendChild(cell);
-          row.setAttribute('id', arrOfObj[i]['id']);
+          row.setAttribute('id', `id${arrOfObj[i]['id']}`);   //* id018
           
       }
       editBtn.setAttribute('id', arrOfObj[i]['id']);
@@ -29,13 +32,13 @@ function createHTMlElements(arrOfObj){
       row.appendChild(editBtn);
     
       delBtn.setAttribute('id', arrOfObj[i]['id']);
-      delBtn.addEventListener('click', ()=>{alert("I will activate delete func")});
+      delBtn.addEventListener('click', ()=>{deletePerson(arrOfObj[i]['id'])});
       delBtn.innerText = 'Delete';
       row.appendChild(delBtn);
       container.appendChild(row);
 
 
-      document.documentElement.style.setProperty("--columns", personKeys.length+2 );
+      document.documentElement.style.setProperty("--columns", personKeys.length );
   document.documentElement.style.setProperty("--rows", arrOfObj.length);
 
 }
@@ -44,4 +47,4 @@ function createHTMlElements(arrOfObj){
 
 
 
-createHTMlElements(personsArr);
+createHTMlElements();
