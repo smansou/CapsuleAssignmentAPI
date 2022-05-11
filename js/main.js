@@ -1,8 +1,6 @@
+const container = document.querySelector('.main-container');
 
-const container = document.querySelector(".main-container");
-
-
-import { deletePerson } from "./delete.js";
+import { deletePerson } from './delete.js';
 
 // ! temp
 
@@ -77,7 +75,6 @@ export const personsArr = [
     city: 'תל אביב',
     capsule: 4,
   },
-
 ];
 
 // ! temp
@@ -114,10 +111,10 @@ const getFetchedData = async (url) => {
  */
 async function makePeopleArr() {
   const data1 = await getFetchedData(
-    "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
+    'https://capsules-asb6.herokuapp.com/api/teacher/mordi'
   );
   const data2 = await getFetchedData(
-    "https://capsules-asb6.herokuapp.com/api/teacher/toam"
+    'https://capsules-asb6.herokuapp.com/api/teacher/toam'
   );
   const generalData = data1.concat(data2);
   const urls = [];
@@ -160,7 +157,7 @@ check();
  * @exapel :
  */
 
-// todo deletePerson(id) return void
+//*  deletePerson(id) return void
 /**
  * @param {string} id
  * @return void
@@ -187,5 +184,3 @@ check();
  * @return void
  * @side_effect re-draw only relevant divs, by new template
  */
-
-
