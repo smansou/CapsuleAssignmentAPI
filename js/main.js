@@ -1,29 +1,29 @@
 const container = document.querySelector(".main-container");
 
-import { deletePerson } from './delete.js';
+import { deletePerson } from "./delete.js";
 
 // ! temp
 const personsArr = [
-  {
-    id: "018",
-    gender: "female",
-    firstName: "מור",
-    lastName: "מנשה",
-    hobby: "לקרוא",
-    age: 31,
-    city: "תל אביב",
-    capsule: 4,
-  },
-  {
-    id: "016",
-    gender: "male",
-    firstName: "מור",
-    lastName: "מנשה",
-    hobby: "לקרוא",
-    age: 31,
-    city: "תל אביב",
-    capsule: 4,
-  },
+  // {
+  //   id: "018",
+  //   gender: "female",
+  //   firstName: "מור",
+  //   lastName: "מנשה",
+  //   hobby: "לקרוא",
+  //   age: 31,
+  //   city: "תל אביב",
+  //   capsule: 4,
+  // },
+  // {
+  //   id: "016",
+  //   gender: "male",
+  //   firstName: "מור",
+  //   lastName: "מנשה",
+  //   hobby: "לקרוא",
+  //   age: 31,
+  //   city: "תל אביב",
+  //   capsule: 4,
+  // },
 ];
 
 // ! temp
@@ -66,28 +66,35 @@ async function makePeopleArr() {
     "https://capsules-asb6.herokuapp.com/api/teacher/toam"
   );
   const generalData = data1.concat(data2);
+  const urls = [];
   for (const element of generalData) {
-    const innerData = await getFetchedData(
-      `https://capsules-asb6.herokuapp.com/api/user/${element.id}`
-    );
-    const person = {
-      id: innerData.id,
-      gender: innerData.gender,
-      firstName: innerData.firstName,
-      lastName: innerData.lastName,
-      hobby: innerData.hobby,
-      age: innerData.age,
-      city: innerData.city,
-      capsule: innerData.capsule,
-    };
-    personsArr.push(person);
+    urls.push(`https://capsules-asb6.herokuapp.com/api/user/${element.id}`);
   }
+  const requests = urls.map((url) => getFetchedData(url));
+  await Promise.all(requests)
+    .then((responses) =>
+      responses.forEach((response) => {
+        const person = {
+          id: response.id,
+          gender: response.gender,
+          firstName: response.firstName,
+          lastName: response.lastName,
+          hobby: response.hobby,
+          age: response.age,
+          city: response.city,
+          capsule: response.capsule,
+        };
+        personsArr.push(person);
+      })
+    )
+    .catch((e) => console.log(e));
 }
 
-console.log(personsArr);
 async function check() {
   await makePeopleArr();
+  console.log(personsArr);
 }
+check();
 
 // todo draw(array)
 // ! genetate person div according to "person" input
