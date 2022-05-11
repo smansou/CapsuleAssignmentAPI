@@ -1,27 +1,27 @@
-const container = document.querySelector(".main-container");
+const container = document.querySelector('.main-container');
 
-import { deletePerson } from './delete.js';
+import { deletePerson, edit } from './delete.js';
 
 // ! temp
 const personsArr = [
   {
-    id: "018",
-    gender: "female",
-    firstName: "מור",
-    lastName: "מנשה",
-    hobby: "לקרוא",
+    id: '018',
+    gender: 'female',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
     age: 31,
-    city: "תל אביב",
+    city: 'תל אביב',
     capsule: 4,
   },
   {
-    id: "016",
-    gender: "male",
-    firstName: "מור",
-    lastName: "מנשה",
-    hobby: "לקרוא",
+    id: '016',
+    gender: 'male',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
     age: 31,
-    city: "תל אביב",
+    city: 'תל אביב',
     capsule: 4,
   },
 ];
@@ -60,10 +60,10 @@ const getFetchedData = async (url) => {
  */
 async function makePeopleArr() {
   const data1 = await getFetchedData(
-    "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
+    'https://capsules-asb6.herokuapp.com/api/teacher/mordi'
   );
   const data2 = await getFetchedData(
-    "https://capsules-asb6.herokuapp.com/api/teacher/toam"
+    'https://capsules-asb6.herokuapp.com/api/teacher/toam'
   );
   const generalData = data1.concat(data2);
   for (const element of generalData) {
@@ -99,7 +99,7 @@ async function check() {
  * @exapel :
  */
 
-// todo deletePerson(id) return void
+//*  deletePerson(id) return void
 /**
  * @param {string} id
  * @return void
