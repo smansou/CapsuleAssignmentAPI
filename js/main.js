@@ -1,9 +1,9 @@
-const container = document.querySelector('.main-container');
+
 
 import { deletePerson } from './delete.js';
 
 // ! temp
-const personsArr = [
+export const personsArr = [
   {
     id: '018',
     gender: 'female',
@@ -15,7 +15,57 @@ const personsArr = [
     capsule: 4,
   },
   {
-    id: '016',
+    id: '036',
+    gender: 'male',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
+    age: 31,
+    city: 'תל אביב',
+    capsule: 4,
+  },
+  {
+    id: '026',
+    gender: 'male',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
+    age: 31,
+    city: 'תל אביב',
+    capsule: 4,
+  },
+  {
+    id: '022',
+    gender: 'male',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
+    age: 31,
+    city: 'תל אביב',
+    capsule: 4,
+  },
+  {
+    id: '012',
+    gender: 'male',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
+    age: 31,
+    city: 'תל אביב',
+    capsule: 4,
+  },
+  {
+    id: '012',
+    gender: 'male',
+    firstName: 'מור',
+    lastName: 'מנשה',
+    hobby: 'לקרוא',
+    age: 31,
+    city: 'תל אביב',
+    capsule: 4,
+  },
+  {
+    id: '012',
     gender: 'male',
     firstName: 'מור',
     lastName: 'מנשה',
@@ -97,4 +147,4 @@ const getFetchedData = async (url) => {
  * @side_effect re-draw only relevant divs, by new template
  */
 
-export { personsArr };
+
