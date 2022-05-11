@@ -5,11 +5,13 @@ import { makePeopleArr } from "./main.js";
 const container = document.querySelector('.main-container');
 
 
+async function draw(){
+const arrOfObj = await makePeopleArr();
+    createHTMlElements(arrOfObj);
+}
 
-
-async function createHTMlElements(){
-    const arrOfObj = await makePeopleArr();
-    
+async function createHTMlElements(arrOfObj){
+    // const arrOfObj = await makePeopleArr();
     let personKeys = ['id', 'gender', 'firstName', 'lastName', 'hobby', 'age', 'city', 'capsule'];
    
       for(let i = 0 ; i < arrOfObj.length; i++){
@@ -47,4 +49,4 @@ async function createHTMlElements(){
 
 
 
-createHTMlElements();
+draw();
