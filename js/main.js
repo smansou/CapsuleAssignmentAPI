@@ -83,14 +83,14 @@ const getFetchedData = async (url) => {
 
 // todo sort(event)
 /**
- * @param {event} id
+ * @param {event}
  * @return void
  * @side_effect re-draw all divs, by new template
  */
 
 // todo filter(event)
 /**
- * @param {event} id
+ * @param {event}
  * @return void
  * @side_effect re-draw only relevant divs, by new template
  */
