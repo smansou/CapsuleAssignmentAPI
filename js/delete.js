@@ -3,9 +3,9 @@ import { personsArr } from './main.js';
 let editIsActiv = false;
 
 export function deletePerson(id) {
-  const elementToRemove = document.querySelector(`#del${id}`);
+  const elementToRemove = document.querySelector(`#id${id}`);
   if (elementToRemove) {
-    elementToRemove.parentElement.remove();
+    elementToRemove.parentNode.removeChild(elementToRemove);
   } else {
     console.error(`Elelment with id "${id}" is ont in the DOM`);
   }
@@ -21,12 +21,12 @@ export function deletePerson(id) {
 export function edit(id) {
   if (editIsActiv) return;
   editIsActiv = true;
-  const btnElement = document.querySelector(`#edit${id}`);
-  if (!btnElement) {
+  const element = document.querySelector(`#id${id}`);
+  if (!element) {
     console.error(`Elelment with id "${id}" is ont in the DOM`);
     return;
   }
-  const element = btnElement.parentElement;
+  // const element = btnElement.parentElement;
 
   const person = personsArr.find((person) => person.id === id);
   if (!person) {

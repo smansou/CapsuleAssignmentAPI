@@ -47,7 +47,7 @@ export const personsArr = [
     capsule: 4,
   },
   {
-    id: '012',
+    id: '019',
     gender: 'male',
     firstName: 'מור',
     lastName: 'מנשה',
@@ -57,7 +57,7 @@ export const personsArr = [
     capsule: 4,
   },
   {
-    id: '012',
+    id: '112',
     gender: 'male',
     firstName: 'מור',
     lastName: 'מנשה',
@@ -67,7 +67,7 @@ export const personsArr = [
     capsule: 4,
   },
   {
-    id: '012',
+    id: '812',
     gender: 'male',
     firstName: 'מור',
     lastName: 'מנשה',
@@ -110,7 +110,7 @@ const getFetchedData = async (url) => {
   },
  *
  */
-async function makePeopleArr() {
+export async function makePeopleArr() {
   const data1 = await getFetchedData(
     'https://capsules-asb6.herokuapp.com/api/teacher/mordi'
   );
@@ -140,13 +140,16 @@ async function makePeopleArr() {
       })
     )
     .catch((e) => console.log(e));
+    return personsArr;
 }
 
-async function check() {
-  await makePeopleArr();
-  console.log(personsArr);
-}
-check();
+
+
+// async function check() {
+//   await makePeopleArr();
+//   console.log(personsArr);
+// }
+// check();
 
 // todo draw(array)
 // ! genetate person div according to "person" input
