@@ -1,6 +1,7 @@
-const container = document.querySelector('.main-container');
+export const container = document.querySelector('.main-container');
 
 import { deletePerson } from './delete.js';
+import { createHTMlElements } from './features.js';
 
 // ! temp
 
