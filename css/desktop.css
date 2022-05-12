@@ -17,7 +17,7 @@
 
 html {
   font-size: 10px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: var(--color5);
   color: var(--text-color);
 }
@@ -30,7 +30,16 @@ main {
   margin: 2rem auto;
   /* font-size: 1.6rem; */
 }
-
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+}
+#contain {
+  display: flex;
+  gap: 3rem;
+}
 .person {
   width: 95%;
   background-color: var(--color2);
