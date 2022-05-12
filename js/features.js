@@ -7,7 +7,7 @@ import { edit } from "./delete.js";
 const container = document.querySelector(".main-container");
 
 
-const container = document.querySelector('.main-container');
+
 
 
 export async function draw() {
