@@ -1,3 +1,4 @@
+
 const container = document.querySelector(".main-container");
 const search = document.getElementById("search");
 const category = document.getElementById("category");
@@ -11,7 +12,8 @@ import { draw } from "./features.js";
 
 export let personsArr = [];
 
-// ! temp
+
+
 
 const getFetchedData = async (url) => {
   try {
@@ -23,26 +25,6 @@ const getFetchedData = async (url) => {
   }
 };
 
-// todo makePeopleArr()
-/**
- * @return {array} array of people objests:
- * @exapel : 
-/**
- * @return {array} array of people objests:
- * @exapel : 
- *  {
- id: '018',
-    gender: 'female',
-    firstName: 'מור',
-    lastName: 'מנשה',
-    hobby: 'לקרוא',
-    age: 31,
-    city: 'תל אביב',
-    capsule: 4,
-    // DONel: document.querySelector('.person'),
-  },
- *
- */
 export async function makePeopleArr() {
   const data1 = await getFetchedData(
     "https://capsules-asb6.herokuapp.com/api/teacher/mordi"
@@ -76,49 +58,9 @@ export async function makePeopleArr() {
   return personsArr;
 }
 
-// async function check() {
-//   await makePeopleArr();
-//   console.log(personsArr);
-// }
-// check();
 
-// todo draw(array)
-// ! genetate person div according to "person" input
-// ! set events listeners on "delete" and "edit" btn's
 
-/**
- * @param {}
- * @return {array} array of people objests:
- * @exapel :
- */
 
-//*  deletePerson(id) return void
-/**
- * @param {string} id
- * @return void
- * @side_effect delelt person from personArr + DOM
- */
-
-// todo edit(id)
-/**
- * @param {string} id
- * @return void
- * @side_effect update person's data in personArr + DOM
- */
-
-// todo sort(event)
-/**
- * @param {event}
- * @return void
- * @side_effect re-draw all divs, by new template
- */
-
-// todo filter(event)
-/**
- * @param {event}
- * @return void
- * @side_effect re-draw only relevant divs, by new template
- */
 category.addEventListener("change", filt);
 search.addEventListener("keyup", filt);
 
