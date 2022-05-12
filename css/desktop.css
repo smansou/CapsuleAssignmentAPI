@@ -83,7 +83,7 @@ nav {
   justify-content: space-evenly;
   text-align: center;
   align-items: center;
-  border: 1px solid black;
+  border-top: 1px solid black;
   width: 100%;
 }
 .cell {
@@ -91,5 +91,5 @@ nav {
   align-items: center;
   width: 100%;
   border-right: 1px solid black;
-  border-left: 1px solid black;
+  /* border-left: 1px solid black; */
 }
