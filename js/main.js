@@ -8,7 +8,6 @@ import { deletePerson } from "./delete.js";
 import { createHTMlElements } from "./features.js";
 import { draw } from "./features.js";
 
-// ! temp
 
 export let personsArr = [];
 
